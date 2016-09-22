@@ -1,0 +1,13 @@
+#Minikube - local dev volume
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-data-dev
+  namespace: dev
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  hostPath:
+    path: /data/ubernax

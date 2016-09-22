@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: postgres
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    name: postgres
+  template:
+    metadata:
+      labels:
+         name: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgreql:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - name: postgres-data
+          mountPath: /data/ubernax
+        - name: secrets
+          mountPath: /etc/secrets
+          readOnly: true
+      volumes:
+      - name: postgres-data
+        persistentVolumeClaim:
+          claimName: postgres-data-dev
+      - name: secrets
+        secret:
+          secretName: db-passwords
