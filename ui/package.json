@@ -1,0 +1,13 @@
+{
+  "name": "ubernax",
+  "version": "0.0.1",
+  "main": "main.js",
+  "dependencies": {
+    "request-promise": "*",
+    "electron-prebuilt": "*"
+  },
+  "devDependencies": {
+    "electron": "^1.4.0",
+    "request-promise": "^4.1.1"
+  }
+}
