@@ -9,6 +9,10 @@ __pycache__/
 #node
 ui/node_modules/
 
+#Emacs
+*~
+#*#
+
 # Distribution / packaging
 .Python
 env/
