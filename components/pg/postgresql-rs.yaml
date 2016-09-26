@@ -14,10 +14,16 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: postgreql:latest
+        image: postgres:9.6
         imagePullPolicy: Always
         ports:
-        - containerPort: 5432
+         - containerPort: 5432
+           hostPort: 5432
+        env:
+          - name: PGDATA
+            value: /data/ubernax
+          - name: POSTGRES_PASSWORD
+            value: password
         volumeMounts:
         - name: postgres-data
           mountPath: /data/ubernax
@@ -30,4 +36,4 @@ spec:
           claimName: postgres-data-dev
       - name: secrets
         secret:
-          secretName: db-passwords
+          secretName: pg-secrets
